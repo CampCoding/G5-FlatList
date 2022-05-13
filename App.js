@@ -1,109 +1,368 @@
 // import React from 'react';
-
-// import {Text, View} from 'react-native';
-// import {SignUpScreen} from './components/CustomTextInput';
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {};
+// import {
+//   View,
+//   Text,
+//   FlatList,
+//   ScrollView,
+//   Image,
+//   ActivityIndicator,
+//   RefreshControl,
+// } from 'react-native';
+// import images from './constants/images';
+// export default class App extends React.Component {
+//   constructor() {
+//     super();
+//     this.state = {
+//       allEmployees: [
+//         {
+//           name: 'ahmed',
+//           age: '21',
+//           job_title: 'Web Developer',
+//           img: images.fci,
+//         },
+//         {
+//           name: 'adel',
+//           age: '21',
+//           job_title: 'Mobile Developer',
+//           img: images.github,
+//         },
+//         {
+//           name: 'mona',
+//           age: '21',
+//           job_title: 'AI Developer',
+//           img: images.quran,
+//         },
+//         {
+//           name: 'ahmed',
+//           age: '21',
+//           job_title: 'Web Developer',
+//           img: images.fci,
+//         },
+//         {
+//           name: 'ahmed',
+//           age: '21',
+//           job_title: 'Web Developer',
+//           img: images.fci,
+//         },
+//         {
+//           name: 'adel',
+//           age: '21',
+//           job_title: 'Mobile Developer',
+//           img: images.github,
+//         },
+//         {
+//           name: 'mona',
+//           age: '21',
+//           job_title: 'AI Developer',
+//           img: images.quran,
+//         },
+//         {
+//           name: 'ahmed',
+//           age: '21',
+//           job_title: 'Web Developer',
+//           img: images.fci,
+//         },
+//         {
+//           name: 'ahmed',
+//           age: '21',
+//           job_title: 'Web Developer',
+//           img: images.fci,
+//         },
+//         {
+//           name: 'adel',
+//           age: '21',
+//           job_title: 'Mobile Developer',
+//           img: images.github,
+//         },
+//         {
+//           name: 'mona',
+//           age: '21',
+//           job_title: 'AI Developer',
+//           img: images.quran,
+//         },
+//         {
+//           name: 'ahmed',
+//           age: '21',
+//           job_title: 'Web Developer',
+//           img: images.fci,
+//         },
+//       ],
+//       isRefreshing: false,
+//     };
 //   }
 //   render() {
-//     return <SignUpScreen />;
+//     return (
+//       <View
+//         style={{
+//           flex: 1,
+//         }}>
+//         {/* <ScrollView showsVerticalScrollIndicator={false}> */}
+//         <FlatList
+//           showsVerticalScrollIndicator={false}
+//           refreshControl={
+//             <RefreshControl
+//               refreshing={this.state.isRefreshing}
+//               colors={['#f00', '#0f0']}
+//               onRefresh={() => {
+//                 this.setState({
+//                   isRefreshing: true,
+//                 });
+
+//                 setTimeout(() => {
+//                   this.setState({
+//                     isRefreshing: false,
+//                   });
+//                 }, 2000);
+//               }}
+//             />
+//           }
+//           ListEmptyComponent={
+//             <View>
+//               <Text>Empty Data</Text>
+//             </View>
+//           }
+//           ListHeaderComponent={
+//             <View
+//               style={{
+//                 width: '100%',
+//                 height: 65,
+//                 backgroundColor: '#009999',
+//               }}>
+//               <Text>Employees</Text>
+//             </View>
+//           }
+//           // ListFooterComponent={
+//           //   <View
+//           //     style={{
+//           //       alignItems: 'center',
+//           //       justifyContent: 'center',
+//           //     }}>
+//           //     <ActivityIndicator size="large" />
+//           //   </View>
+//           // }
+//           onEndReached={() => {
+//             alert('End FlatList');
+//           }}
+//           data={this.state.allEmployees}
+//           renderItem={({item, index}) => (
+//             <View
+//               style={{
+//                 width: '90%',
+//                 padding: 10,
+//                 borderRadius: 8,
+//                 backgroundColor: '#fff',
+//                 shadowColor: '#000',
+//                 shadowOffset: {
+//                   width: 0,
+//                   height: 2,
+//                 },
+//                 shadowOpacity: 0.25,
+//                 shadowRadius: 3.84,
+
+//                 elevation: 5,
+//                 flexDirection: 'row',
+//                 alignSelf: 'center',
+//                 marginVertical: 15,
+//               }}>
+//               <View>
+//                 <Image
+//                   source={item.img}
+//                   style={{
+//                     height: 60,
+//                     width: 60,
+//                     borderRadius: 60 / 2,
+//                   }}
+//                 />
+//               </View>
+
+//               <View
+//                 style={{
+//                   marginLeft: 10,
+//                 }}>
+//                 <Text>Name: {item.name}</Text>
+//                 <Text>age: {item.age}</Text>
+//                 <Text>job title: {item.job_title}</Text>
+//               </View>
+//             </View>
+//           )}
+//         />
+
+//         {/* {this.state.allEmployees.length > 0 ? (
+//             this.state.allEmployees.map((item, index) => <></>)
+//           ) : (
+//             <Text>No Data</Text>
+//           )}
+//         </ScrollView> */}
+//       </View>
+//     );
 //   }
 // }
 
-// export default App;
-
 import React from 'react';
-import {View, Text, TextInput, Dimensions} from 'react-native';
-import {AppBtn} from './components/AppBtn';
-import {rem} from './components/remWidth';
-import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
-import EventEmitter from 'react-native/Libraries/vendor/emitter/EventEmitter';
-
-const {width, height} = Dimensions.get('window');
-class App extends React.Component {
+import {
+  View,
+  Text,
+  FlatList,
+  ScrollView,
+  Image,
+  ActivityIndicator,
+  RefreshControl,
+} from 'react-native';
+import images from './constants/images';
+export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      realWidth: width,
-      passInput: 'aaaaaaa',
-      testTxt: 'Sign Up',
+      allEmployees: [
+        {
+          name: 'ahmed',
+          age: '21',
+          job_title: 'Web Developer',
+          img: images.fci,
+        },
+        {
+          name: 'adel',
+          age: '21',
+          job_title: 'Mobile Developer',
+          img: images.github,
+        },
+        {
+          name: 'mona',
+          age: '21',
+          job_title: 'AI Developer',
+          img: images.quran,
+        },
+        {
+          name: 'ahmed',
+          age: '21',
+          job_title: 'Web Developer',
+          img: images.fci,
+        },
+        {
+          name: 'ahmed',
+          age: '21',
+          job_title: 'Web Developer',
+          img: images.fci,
+        },
+        {
+          name: 'adel',
+          age: '21',
+          job_title: 'Mobile Developer',
+          img: images.github,
+        },
+        {
+          name: 'mona',
+          age: '21',
+          job_title: 'AI Developer',
+          img: images.quran,
+        },
+        {
+          name: 'ahmed',
+          age: '21',
+          job_title: 'Web Developer',
+          img: images.fci,
+        },
+      ],
+      isRefreshing: false,
     };
-  }
-
-  componentDidMount() {
-    Dimensions.addEventListener('change', ({window}) => {
-      const newWi = window.width;
-      this.setState({
-        realWidth: newWi,
-      });
-    });
-  }
-
-  componentWillUnmount() {
-    Dimensions.removeEventListener('change');
-    // EventEmitter.remove('change');
   }
   render() {
     return (
       <View
         style={{
           flex: 1,
-          justifyContent: 'center',
-          paddingHorizontal: 50,
         }}>
-        <AppBtn
-          plhol="password"
-          value={this.state.passInput}
-          onChange={text => {
-            this.setState({
-              passInput: text,
-            });
-          }}
-        />
-        <TextInput
-          value={this.state.passInput}
-          onChangeText={text => {
-            this.setState({
-              passInput: text,
-            });
-          }}
-          style={{
-            height: scale(40),
-            borderWidth: 1,
-            borderColor: '#ccc',
-            borderRadius: 8,
-            marginBottom: 20,
-            padding: 10,
-          }}
-          placeholder={'email'}
-        />
-        <View
-          style={this.state.realWidth > 500 ? {flexDirection: 'row'} : null}>
-          <View
-            style={
-              this.state.realWidth > 500 ? {flex: 1, marginEnd: 10} : null
-            }>
-            <AppBtn plhol="email" />
-          </View>
-          <View
-            style={
-              this.state.realWidth > 500 ? {flex: 1, marginStart: 10} : null
-            }>
-            <AppBtn plhol="confirm pass" />
-          </View>
-        </View>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={this.state.allEmployees}
+          renderItem={({item, index}) => (
+            <View
+              style={{
+                width: '90%',
+                padding: 10,
+                borderRadius: 8,
+                backgroundColor: '#fff',
+                shadowColor: '#000',
+                shadowOffset: {
+                  width: 0,
+                  height: 2,
+                },
+                shadowOpacity: 0.25,
+                shadowRadius: 3.84,
 
-        <Text
-          style={{
-            fontSize: scale(18),
-          }}>
-          {this.state.testTxt}
-        </Text>
+                elevation: 5,
+                flexDirection: 'row',
+                alignSelf: 'center',
+                marginVertical: 15,
+              }}>
+              <View>
+                <Image
+                  source={item.img}
+                  style={{
+                    height: 60,
+                    width: 60,
+                    // borderRadius: 60 / 2,
+                  }}
+                  resizeMode="contain"
+                />
+              </View>
+
+              <View
+                style={{
+                  marginLeft: 10,
+                }}>
+                <Text>Name: {item.name}</Text>
+                <Text>age: {item.age}</Text>
+                <Text>job title: {item.job_title}</Text>
+              </View>
+            </View>
+          )}
+        />
+
+        {/* <ScrollView>
+          {this.state.allEmployees.map((item, index) => (
+            <View
+              style={{
+                width: '90%',
+                padding: 10,
+                borderRadius: 8,
+                backgroundColor: '#fff',
+                shadowColor: '#000',
+                shadowOffset: {
+                  width: 0,
+                  height: 2,
+                },
+                shadowOpacity: 0.25,
+                shadowRadius: 3.84,
+
+                elevation: 5,
+                flexDirection: 'row',
+                alignSelf: 'center',
+                marginVertical: 15,
+              }}>
+              <View>
+                <Image
+                  source={item.img}
+                  style={{
+                    height: 60,
+                    width: 60,
+                    borderRadius: 60 / 2,
+                  }}
+                />
+              </View>
+
+              <View
+                style={{
+                  marginLeft: 10,
+                }}>
+                <Text>Name: {item.name}</Text>
+                <Text>age: {item.age}</Text>
+                <Text>job title: {item.job_title}</Text>
+              </View>
+            </View>
+          ))}
+        </ScrollView> */}
       </View>
     );
   }
 }
-
-export default App;
